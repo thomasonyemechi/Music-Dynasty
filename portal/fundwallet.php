@@ -47,8 +47,7 @@ $id = $_SESSION['user_id'];
         <div class="container-fluid">
           <div class="row">
             <div class="callout callout-info">
-              <h5>How it works
-              </h5>
+              <h5>How it works</h5>
               <p>T&Cs<br>
                 1. Do not share your username and password<br>
                 <br>
@@ -67,128 +66,110 @@ $id = $_SESSION['user_id'];
                 The more your referral line, the more money you make<br>
                 <br>
                 Also the linked artiste's project streaming increases to your advantage!
-                <?php
-                if (!$max->wallet($uid) >= ($amt / 100)) {
-                  if (userName($id, 'active') == 0) {
-                ?>
 
-              <form method='post' action='https://webpay.interswitchng.com/collections/w/pay'>
-                <input type="hidden" name='site_redirect_url' class="form-control" value='https://musicdynasty.ng/portal/credit.php?<?php echo 'amt=' . $amt . '&&trno=' . $trno . '&&id=' . $id . ''; ?>' />
-                <input type="hidden" name='pay_item_id' class="form-control" value='Default_Payable_MX20060' />
-                <!-- <strong>Transaction Reference</strong>  -->
-                <input type="hidden" name='txn_ref' class="form-control" value='<?php echo $trno ?>' />
-                <strong>Next Step> </strong>
-                <input type="hidden" name='amount' value='<?php echo $amt ?>' class="form-control" />
-                <!-- <strong>Currency:</strong>  -->
-                <input type="hidden" name='currency' value='566' class="form-control" />
-                <!-- <strong>Customer Name</strong>  -->
-                <input type="hidden" name='cust_name' value='<?php echo userName($id) ?>' class="form-control" />
-                <!-- <strong>Payment Item Name</strong>  -->
-                <input type="hidden" name='pay_item_name' value='Account Activation' class="form-control" />
-                <!-- <strong>Display Mode:</strong>  -->
-                <input type="hidden" name='display_mode' value='PAGE' class="form-control" />
-                <!-- <strong>Merchant Code</strong>  -->
-                <input type="hidden" name='merchant_code' value='MX20060' class="form-control" />
-                <strong>Hit "Subscribe Now" to invest and sponsor a music project</strong> <input type='submit' class="btn btn-primary btn-block" value='Subscribe Now' class="form-control" />
-              </form>
+              </p>
+              <?php
+              if (!$max->wallet($uid) >= ($amt / 100)) {
+                if (userName($id, 'active') == 0) {
+              ?>
+
+                  <form method='post' action='https://webpay.interswitchng.com/collections/w/pay'>
+                    <input type="hidden" name='site_redirect_url' class="form-control" value='https://musicdynasty.ng/portal/credit.php?<?php echo 'amt=' . $amt . '&&trno=' . $trno . '&&id=' . $id . ''; ?>' />
+                    <input type="hidden" name='pay_item_id' class="form-control" value='Default_Payable_MX20060' />
+                    <!-- <strong>Transaction Reference</strong>  -->
+                    <input type="hidden" name='txn_ref' class="form-control" value='<?php echo $trno ?>' />
+                    <strong>Next Step> </strong>
+                    <input type="hidden" name='amount' value='<?php echo $amt ?>' class="form-control" />
+                    <!-- <strong>Currency:</strong>  -->
+                    <input type="hidden" name='currency' value='566' class="form-control" />
+                    <!-- <strong>Customer Name</strong>  -->
+                    <input type="hidden" name='cust_name' value='<?php echo userName($id) ?>' class="form-control" />
+                    <!-- <strong>Payment Item Name</strong>  -->
+                    <input type="hidden" name='pay_item_name' value='Account Activation' class="form-control" />
+                    <!-- <strong>Display Mode:</strong>  -->
+                    <input type="hidden" name='display_mode' value='PAGE' class="form-control" />
+                    <!-- <strong>Merchant Code</strong>  -->
+                    <input type="hidden" name='merchant_code' value='MX20060' class="form-control" />
+                    <strong>Hit "Subscribe Now" to invest and sponsor a music project</strong> <input type='submit' class="btn btn-primary btn-block" value='Subscribe Now' class="form-control" />
+                  </form>
+              <?php }
+              } ?>
 
 
-          <?php }
-                } ?>
 
 
+              <?php if (userName($id, 'active') == 0) {
+                if ($max->wallet($uid) >= ($amt / 100)) { ?>
+                  <form method="post">
+                    <input type="hidden" name="amt" value="<?php echo $amt / 100 ?>">
+                    <button name="ActivateAccount" value="<?php echo $amt; ?>" class="btn btn-success btn-block btn-lg mt-2">Activate Account</button>
+                  </form>
+                <?php } else { ?>
+                  <!--  <em>Sponsor Artist with the sum of NGN<?php echo $amt ?> to activate account;</em>-->
+              <?php }
+              } ?>
+              <marquee behavior="scroll" direction="left">Online music promoters, for enquires email: Admin@musicDynasty.ng</marquee>
 
-          <?php echo $max->wallet($uid); ?>
-
-          <?php if (userName($id, 'active') == 0) {
-            if ($max->wallet($uid) >= ($amt / 100)) { ?>
-              <form method="post">
-                <input type="hidden" name="amt" value="<?php echo $amt / 100 ?>">
-                <button name="ActivateAccount" value="<?php echo $amt; ?>" class="btn btn-success btn-block btn-lg mt-2">Activate Account</button>
-              </form>
-            <?php } else { ?>
-              <!--  <em>Sponsor Artist with the sum of NGN<?php echo $amt ?> to activate account;</em>-->
-          <?php }
-          } ?>
             </div>
-            <marquee behavior="scroll" direction="left">Online music promoters, for enquires email: Admin@musicDynasty.ng</marquee>
 
           </div>
-          <!--/.col (left) -->
-          <!-- right column -->
-
-          <!--/.col (right) -->
         </div>
-        <!-- /.row -->
-    </div><!-- /.container-fluid -->
-    </section>
+      </section>
 
-    <section class="content">
-      <div class="container-fluid">
-        <div class="row">
-          <!-- left column -->
-          <div class="col-md-12">
-            <!-- jquery validation -->
-            <div class="card card-primary card-outline">
-              <div class="card-header">
-                <h2 class="card-title">Transactions</h2>
-              </div>
-              <div class="card-body">
-                <form method="post">
-                  <div class="card-body">
-                    <div class="table-responsive">
-                      <table id="example1" class="table table-bordered table-striped">
-                        <thead>
-                          <tr>
-                            <th>SN </th>
-                            <th>Reference</th>
-                            <th>Date</th>
-                            <th>Amount</th>
-                            <th>Depositor/Ref</th>
-                            <th>Type</th>
-                            <th>Status</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <?php
-                          $i = 1;
-                          $sql = $db->query("SELECT * FROM walletorder WHERE id='$id'  ORDER BY sn ");
-                          while ($row = $sql->fetch_assoc()) {
-                            $e = $i++;
-                            //$status = $row['status']>0 ? 'Complete' : 'Pending';
-
-                          ?>
-
+      <section class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <!-- left column -->
+            <div class="col-md-12">
+              <!-- jquery validation -->
+              <div class="card card-primary card-outline">
+                <div class="card-header">
+                  <h2 class="card-title">Transactions</h2>
+                </div>
+                <div class="card-body">
+                  <form method="post">
+                    <div class="card-body">
+                      <div class="table-responsive">
+                        <table id="example1" class="table table-bordered table-striped">
+                          <thead>
                             <tr>
-                              <td><?php echo $e; ?></td>
-                              <td><?php echo $row['trno']    ?></td>
-                              <td><?php echo date('jS M, Y', $row['ctime']); ?></td>
-                              <td><?php echo $row['amount'] ?></td>
-                              <td><?php echo $row['ref'] ?></td>
-                              <td><?php echo $row['type'] ?></td>
-                              <td><?php echo $max->walletStatus($row['status']); ?></td>
-
-
-
+                              <th>SN </th>
+                              <th>Reference</th>
+                              <th>Date</th>
+                              <th>Amount</th>
+                              <th>Depositor/Ref</th>
+                              <th>Type</th>
+                              <th>Status</th>
                             </tr>
-
-                          <?php } ?>
-                        </tbody>
-                      </table>
+                          </thead>
+                          <tbody>
+                            <?php
+                            $i = 1;
+                            $sql = $db->query("SELECT * FROM walletorder WHERE id='$id'  ORDER BY sn ");
+                            while ($row = $sql->fetch_assoc()) {
+                              $e = $i++;
+                            ?>
+                              <tr>
+                                <td><?php echo $e; ?></td>
+                                <td><?php echo $row['trno']    ?></td>
+                                <td><?php echo date('jS M, Y', $row['ctime']); ?></td>
+                                <td><?php echo $row['amount'] ?></td>
+                                <td><?php echo $row['ref'] ?></td>
+                                <td><?php echo $row['type'] ?></td>
+                                <td><?php echo $max->walletStatus($row['status']); ?></td>
+                              </tr>
+                            <?php } ?>
+                          </tbody>
+                        </table>
+                      </div>
                     </div>
-                  </div>
-                  <!-- /.card-body -->
-                </form>
+                  </form>
+                </div>
               </div>
-
-              <!-- /.card -->
             </div>
-
           </div>
-          <!-- /.row -->
-        </div><!-- /.container-fluid -->
-    </section>
-  </div>
+      </section>
+    </div>
   </div>
   </div>
   </div>

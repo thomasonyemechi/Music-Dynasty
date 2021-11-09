@@ -1,6 +1,5 @@
 <?php
 include ('library/connect.inc.php');
-//session_start();
 $id=$_SESSION['user_id'];
  ?>
 
