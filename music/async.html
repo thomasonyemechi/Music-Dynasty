@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+
+</body>
+
+<script type="text/javascript">
+	function resolveAfter2Seconds() {
+	  return new Promise(resolve => {
+	    setTimeout(() => {
+	      resolve('resolved');
+	    }, 2000);
+	  });
+	}
+
+	async function asyncCall() {
+	  console.log('calling');
+	  const result = await resolveAfter2Seconds();
+	  console.log(result);
+	  // expected output: "resolved"
+	}
+
+	asyncCall();
+
+</script>
+</html>		

@@ -1,0 +1,39 @@
+[08-Aug-2021 04:38:55 UTC] PHP Warning:  include(../portal/library/constant.php): failed to open stream: No such file or directory in /home/musicdyn/public_html/music/lib/mconnect.php on line 3
+[08-Aug-2021 04:38:55 UTC] PHP Warning:  include(../portal/library/constant.php): failed to open stream: No such file or directory in /home/musicdyn/public_html/music/lib/mconnect.php on line 3
+[08-Aug-2021 04:38:55 UTC] PHP Warning:  include(): Failed opening '../portal/library/constant.php' for inclusion (include_path='.:/opt/cpanel/ea-php73/root/usr/share/pear') in /home/musicdyn/public_html/music/lib/mconnect.php on line 3
+[08-Aug-2021 04:38:55 UTC] PHP Warning:  include(../portal/library/function.php): failed to open stream: No such file or directory in /home/musicdyn/public_html/music/lib/mconnect.php on line 4
+[08-Aug-2021 04:38:55 UTC] PHP Warning:  include(../portal/library/function.php): failed to open stream: No such file or directory in /home/musicdyn/public_html/music/lib/mconnect.php on line 4
+[08-Aug-2021 04:38:55 UTC] PHP Warning:  include(): Failed opening '../portal/library/function.php' for inclusion (include_path='.:/opt/cpanel/ea-php73/root/usr/share/pear') in /home/musicdyn/public_html/music/lib/mconnect.php on line 4
+[08-Aug-2021 04:38:55 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/musicdyn/public_html/music/lib/class.php on line 3
+[08-Aug-2021 04:38:55 UTC] PHP Warning:  include(foot.php): failed to open stream: No such file or directory in /home/musicdyn/public_html/music/admin/index.php on line 543
+[08-Aug-2021 04:38:55 UTC] PHP Warning:  include(foot.php): failed to open stream: No such file or directory in /home/musicdyn/public_html/music/admin/index.php on line 543
+[08-Aug-2021 04:38:55 UTC] PHP Warning:  include(): Failed opening 'foot.php' for inclusion (include_path='.:/opt/cpanel/ea-php73/root/usr/share/pear') in /home/musicdyn/public_html/music/admin/index.php on line 543
+[08-Aug-2021 04:38:55 UTC] PHP Warning:  include(modal.php): failed to open stream: No such file or directory in /home/musicdyn/public_html/music/admin/index.php on line 549
+[08-Aug-2021 04:38:55 UTC] PHP Warning:  include(modal.php): failed to open stream: No such file or directory in /home/musicdyn/public_html/music/admin/index.php on line 549
+[08-Aug-2021 04:38:55 UTC] PHP Warning:  include(): Failed opening 'modal.php' for inclusion (include_path='.:/opt/cpanel/ea-php73/root/usr/share/pear') in /home/musicdyn/public_html/music/admin/index.php on line 549
+[08-Aug-2021 04:38:56 UTC] PHP Warning:  include(../portal/library/constant.php): failed to open stream: No such file or directory in /home/musicdyn/public_html/music/lib/mconnect.php on line 3
+[08-Aug-2021 04:38:56 UTC] PHP Warning:  include(../portal/library/constant.php): failed to open stream: No such file or directory in /home/musicdyn/public_html/music/lib/mconnect.php on line 3
+[08-Aug-2021 04:38:56 UTC] PHP Warning:  include(): Failed opening '../portal/library/constant.php' for inclusion (include_path='.:/opt/cpanel/ea-php73/root/usr/share/pear') in /home/musicdyn/public_html/music/lib/mconnect.php on line 3
+[08-Aug-2021 04:38:56 UTC] PHP Warning:  include(../portal/library/function.php): failed to open stream: No such file or directory in /home/musicdyn/public_html/music/lib/mconnect.php on line 4
+[08-Aug-2021 04:38:56 UTC] PHP Warning:  include(../portal/library/function.php): failed to open stream: No such file or directory in /home/musicdyn/public_html/music/lib/mconnect.php on line 4
+[08-Aug-2021 04:38:56 UTC] PHP Warning:  include(): Failed opening '../portal/library/function.php' for inclusion (include_path='.:/opt/cpanel/ea-php73/root/usr/share/pear') in /home/musicdyn/public_html/music/lib/mconnect.php on line 4
+[08-Aug-2021 04:38:56 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/musicdyn/public_html/music/lib/class.php on line 3
+[08-Aug-2021 04:38:56 UTC] PHP Warning:  include(foot.php): failed to open stream: No such file or directory in /home/musicdyn/public_html/music/admin/index.php on line 543
+[08-Aug-2021 04:38:56 UTC] PHP Warning:  include(foot.php): failed to open stream: No such file or directory in /home/musicdyn/public_html/music/admin/index.php on line 543
+[08-Aug-2021 04:38:56 UTC] PHP Warning:  include(): Failed opening 'foot.php' for inclusion (include_path='.:/opt/cpanel/ea-php73/root/usr/share/pear') in /home/musicdyn/public_html/music/admin/index.php on line 543
+[08-Aug-2021 04:38:56 UTC] PHP Warning:  include(modal.php): failed to open stream: No such file or directory in /home/musicdyn/public_html/music/admin/index.php on line 549
+[08-Aug-2021 04:38:56 UTC] PHP Warning:  include(modal.php): failed to open stream: No such file or directory in /home/musicdyn/public_html/music/admin/index.php on line 549
+[08-Aug-2021 04:38:56 UTC] PHP Warning:  include(): Failed opening 'modal.php' for inclusion (include_path='.:/opt/cpanel/ea-php73/root/usr/share/pear') in /home/musicdyn/public_html/music/admin/index.php on line 549
+[08-Aug-2021 04:38:56 UTC] PHP Warning:  include(../portal/library/constant.php): failed to open stream: No such file or directory in /home/musicdyn/public_html/music/lib/mconnect.php on line 3
+[08-Aug-2021 04:38:56 UTC] PHP Warning:  include(../portal/library/constant.php): failed to open stream: No such file or directory in /home/musicdyn/public_html/music/lib/mconnect.php on line 3
+[08-Aug-2021 04:38:56 UTC] PHP Warning:  include(): Failed opening '../portal/library/constant.php' for inclusion (include_path='.:/opt/cpanel/ea-php73/root/usr/share/pear') in /home/musicdyn/public_html/music/lib/mconnect.php on line 3
+[08-Aug-2021 04:38:56 UTC] PHP Warning:  include(../portal/library/function.php): failed to open stream: No such file or directory in /home/musicdyn/public_html/music/lib/mconnect.php on line 4
+[08-Aug-2021 04:38:56 UTC] PHP Warning:  include(../portal/library/function.php): failed to open stream: No such file or directory in /home/musicdyn/public_html/music/lib/mconnect.php on line 4
+[08-Aug-2021 04:38:56 UTC] PHP Warning:  include(): Failed opening '../portal/library/function.php' for inclusion (include_path='.:/opt/cpanel/ea-php73/root/usr/share/pear') in /home/musicdyn/public_html/music/lib/mconnect.php on line 4
+[08-Aug-2021 04:38:56 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/musicdyn/public_html/music/lib/class.php on line 3
+[08-Aug-2021 04:38:56 UTC] PHP Warning:  include(foot.php): failed to open stream: No such file or directory in /home/musicdyn/public_html/music/admin/index.php on line 543
+[08-Aug-2021 04:38:56 UTC] PHP Warning:  include(foot.php): failed to open stream: No such file or directory in /home/musicdyn/public_html/music/admin/index.php on line 543
+[08-Aug-2021 04:38:56 UTC] PHP Warning:  include(): Failed opening 'foot.php' for inclusion (include_path='.:/opt/cpanel/ea-php73/root/usr/share/pear') in /home/musicdyn/public_html/music/admin/index.php on line 543
+[08-Aug-2021 04:38:56 UTC] PHP Warning:  include(modal.php): failed to open stream: No such file or directory in /home/musicdyn/public_html/music/admin/index.php on line 549
+[08-Aug-2021 04:38:56 UTC] PHP Warning:  include(modal.php): failed to open stream: No such file or directory in /home/musicdyn/public_html/music/admin/index.php on line 549
+[08-Aug-2021 04:38:56 UTC] PHP Warning:  include(): Failed opening 'modal.php' for inclusion (include_path='.:/opt/cpanel/ea-php73/root/usr/share/pear') in /home/musicdyn/public_html/music/admin/index.php on line 549
