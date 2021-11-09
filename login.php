@@ -2,7 +2,7 @@
 
 session_start();  ob_clean();
 include ('portal/library/connect.inc.php');
-$report = $_SESSION['report'];
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -27,7 +27,7 @@ $report = $_SESSION['report'];
       <p class="login-box-msg">Sign in</p>
 
       <form method="post">
-        <?php if(isset($report)){echo $max->Alert2();} ?>
+        <?php if(isset($report) AND $report != ''){echo $max->Alert2();} ?>
         <div class="input-group mb-3">
           <input type="text" name="user" class="form-control" placeholder="email" required>
           <div class="input-group-append">

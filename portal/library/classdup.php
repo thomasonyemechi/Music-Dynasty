@@ -1,3 +1,5 @@
+<?php 
+
 <?php
 
 
@@ -50,8 +52,6 @@ class Profile
             $this->FundWalletadmin();
         } elseif (array_key_exists('LoginUsers', $_POST)) {
             $this->LoginUsers();
-
-            
         } elseif (array_key_exists('ActivateAccount', $_POST)) {
             $this->ActivateAccount();
         } elseif (array_key_exists('updateSignup', $_POST)) {

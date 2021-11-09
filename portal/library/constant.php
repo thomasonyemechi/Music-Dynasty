@@ -22,9 +22,9 @@ define("CTIME",time());
 		
 
 define("DB_SERVER", "localhost");
-define("DB_USER", "musicdyn_musicdyn");//enter your database username
-define("DB_PASS", "musicdynasty.ng");//databse password
-define("DB_NAME", "musicdyn_core");//database name
+define("DB_USER", "root");//enter your database username
+define("DB_PASS", "");//databse password
+define("DB_NAME", "musicdy");//database name
 define ("STATUSBETA", sha1(56));
 define ("STATUSALPHA", sha1(65));
 define ("MATRIX", 2);
@@ -42,8 +42,6 @@ define ("MATRIX", 2);
 
 
 define("TODAY", date("Y-m-d"));
-
-\
 /**
  * Timeout Constants - these constants refer to
  * the maximum amount of time (in minutes) after
