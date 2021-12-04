@@ -61,6 +61,14 @@ define("ADMIN_TIMEOUT", 5);
 define("COOKIE_EXPIRE", 60*60*24*100);  //100 days by default
 define("COOKIE_PATH", "/");  //Avaible in whole domain
 
+
+
+define("P_KEY", "FLWPUBK_TEST-c5f1ceaf435480e3cd9fbaafd9292dd9-X");
+define("S_KEY", "FLWSECK_TEST-1ee2b3bd662657e8f28d19813be9382e-X");
+
+
+
+
 /**
  * Email Constants - these specify what goes in
  * the from field in the emails that the script

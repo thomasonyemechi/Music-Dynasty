@@ -50,8 +50,8 @@ class Profile
             $this->FundWalletadmin();
         } elseif (array_key_exists('LoginUsers', $_POST)) {
             $this->LoginUsers();
-
-            
+        }  elseif (array_key_exists('verifyTransaction', $_POST)) {
+            $this->verifyTransaction();
         } elseif (array_key_exists('ActivateAccount', $_POST)) {
             $this->ActivateAccount();
         } elseif (array_key_exists('updateSignup', $_POST)) {
@@ -108,6 +108,82 @@ class Profile
 
 
 
+        function verifyTransaction()
+        {
+            global $db;
+            $trxId = $_POST['transaction_id'];
+            $tx_ref = $_POST['tx_ref'];
+            $user_id = $_POST['user_id'];
+            $amt = $_POST['amount'];
+
+            $curl = curl_init();
+            curl_setopt_array($curl, array(
+                CURLOPT_URL => "https://api.flutterwave.com/v3/transactions/" . $trxId . "/verify",
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_ENCODING => "",
+                CURLOPT_MAXREDIRS => 10,
+                CURLOPT_TIMEOUT => 0,
+                CURLOPT_FOLLOWLOCATION => true,
+                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                CURLOPT_CUSTOMREQUEST => "GET",
+                CURLOPT_HTTPHEADER => array(
+                    "Content-Type: application/json",
+                    "Authorization: Bearer FLWSECK_TEST-1ee2b3bd662657e8f28d19813be9382e-X"
+                ),
+            ));
+            $response = curl_exec($curl);
+            $err = curl_error($curl);
+            curl_close($curl);
+            if ($err) {
+                $data = ['message' => 'Payment error, curl error', 'success' => false];
+            } else {
+                $res = json_decode($response);
+                if($res->status == 'success'){
+                    $this->processWallet($user_id,$amt,9,20,'Wallet funding',$trxId.'.'.$tx_ref);
+                    $data = ['message' => 'Payment Successfull', 'success' => true];
+                }else{
+                    $data = ['message' => 'Payment error', 'success' => false];
+                }        
+            }
+            echo json_encode($data);
+        }
+
+
+
+
+
+
+    // function verifyMail()
+    // {
+    //     global $db , $report;
+    //     $token = $_POST['token'];
+    //     $id = $_POST['id'];
+    //     $db->query("UPDATE user SET verifed = 1 WHERE id = '$id' ");
+
+    //     $report = 'Email Verified sucessfully';
+    // }
+
+
+
+    // function sendVerificationMail()
+    // {
+    //     global $db;
+    //     $token = $this->win_hash(50);
+    //     $email = $_POST['email'];
+
+    //     $subject = 'Verify Your E-Mail';
+    //     $m = '<h3>Verify Your E-Mail</h3>
+    //     <p>Welcome to Music Dynasty! <br> Here is your E-mail verification link Link:</p>
+    //     <big><a href="https://musicdynasty.ng/portal/confirm.php?token=' . $token . '"><b style="color: orange">https://musicdynasty.ng/portal/confirm.php?token=' . $token . '</b></a></big>
+    //     <br> <p>This is an Automated message, please do not reply</p>';
+    //     $this->emailerAll($email, $m, $subject);
+
+    //     $report = 'Verification mail has been sent to you';
+
+    // }
+
+
+
 
     function signupMail($email, $token)
     {
@@ -131,6 +207,7 @@ class Profile
         $this->signupMail($email, $token);
         //exit($fid);
         $report = 'Email Confirmarion Link Sent';
+        return;
     }
 
 
@@ -147,6 +224,17 @@ class Profile
     }
 
 
+    function userName5($user,$col)
+    {
+        global $db;
+        $que = $db->query("SELECT * FROM user WHERE id = '$user' ") or die(mysqli_error($db));
+        $ro = mysqli_fetch_array($que);
+        $val = ($col == '')?$ro['firstname'] . ' ' . $ro['lastname']:$ro[$col];
+        return $val;
+    }
+
+
+
     function ActivateAccount()
     {
         global  $db, $report, $count;
@@ -158,6 +246,15 @@ class Profile
         $sql = $db->query("UPDATE user SET active=3 where id='$id' ") or die('cannot');
         header('location:userdashboard.php');
         return;
+    }
+
+
+    function userName($user,$val)
+    {
+        global $db;
+        $que = $db->query("SELECT * FROM user WHERE sn = '$user' ") or die(mysqli_error($db));
+        $ro = mysqli_fetch_array($que);
+        return $ro[$val];
     }
 
 
@@ -191,51 +288,51 @@ class Profile
 
 
 
-    function RegisterFromWallet($userid)
-    {
-        global $db, $report, $count;
-        $sponsorid = $this->assignSponsor($userid);
+//     function RegisterFromWallet($userid)
+//     {
+//         global $db, $report, $count;
+//         $sponsorid = $this->assignSponsor($userid);
 
-        $b1 = $this->idToKey($sponsorid);
-        $b2 = $this->idToKey($sponsorid, 'b1');
-        $b3 = $this->idToKey($sponsorid, 'b2');
-        $b4 = $this->idToKey($sponsorid, 'b3');
+//         $b1 = $this->idToKey($sponsorid);
+//         $b2 = $this->idToKey($sponsorid, 'b1');
+//         $b3 = $this->idToKey($sponsorid, 'b2');
+//         $b4 = $this->idToKey($sponsorid, 'b3');
 
-        $user = userName($userid, 'user');
+//         $user = userName($userid, 'user');
 
-        $upline = $this->findUpline($b1);
-        $que = $db->query("SELECT * FROM user WHERE sn = '$upline' ");
-        $ro = mysqli_fetch_array($que);
-        $a1 = $ro['sn'];
-        $a2 = $ro['a1'];
-        $a3 = $ro['a2'];
-        $a4 = $ro['a3'];
-        $a5 = $ro['a4'];
-        $a6 = $ro['a5'];
-        $a7 = $ro['a6'];
-        $a8 = $ro['a7'];
-        $a9 = $ro['a8'];
-        $a10 = $ro['a9'];
-        $ctime = time();
+//         $upline = $this->findUpline($b1);
+//         $que = $db->query("SELECT * FROM user WHERE sn = '$upline' ");
+//         $ro = mysqli_fetch_array($que);
+//         $a1 = $ro['sn'];
+//         $a2 = $ro['a1'];
+//         $a3 = $ro['a2'];
+//         $a4 = $ro['a3'];
+//         $a5 = $ro['a4'];
+//         $a6 = $ro['a5'];
+//         $a7 = $ro['a6'];
+//         $a8 = $ro['a7'];
+//         $a9 = $ro['a8'];
+//         $a10 = $ro['a9'];
+//         $ctime = time();
 
-        $reg = $db->query("INSERT INTO user (id,user,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,b1,b2,b3,b4,ctime)
-VALUES('$userid','$user','$a1','$a2','$a3','$a4','$a5','$a6','$a7','$a8','$a9','$a10','$b1','$b2','$b3','$b4','$ctime')") or die('Cannot Connect to Server');
+//         $reg = $db->query("INSERT INTO user (id,user,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,b1,b2,b3,b4,ctime)
+// VALUES('$userid','$user','$a1','$a2','$a3','$a4','$a5','$a6','$a7','$a8','$a9','$a10','$b1','$b2','$b3','$b4','$ctime')") or die('Cannot Connect to Server');
 
-        //Update Active and Sponsors//
-        $this->updateActiveAndRef($upline, $b1);
+//         //Update Active and Sponsors//
+//         $this->updateActiveAndRef($upline, $b1);
 
-        //Send Email to Registered User
-        $email = $this->idToUser($userid, 'email');
-        $this->emailer($email);
-        //Promote Uplines
-        if ($this->stage1($a2) == 10) {
-            $this->stageUpdate($a2);
-        }
+//         //Send Email to Registered User
+//         $email = $this->idToUser($userid, 'email');
+//         $this->emailer($email);
+//         //Promote Uplines
+//         if ($this->stage1($a2) == 10) {
+//             $this->stageUpdate($a2);
+//         }
 
-        $_SESSION['report'] = 'Account Activation successful';
+//         $_SESSION['report'] = 'Account Activation successful';
 
-        return; //
-    }
+//         return; //
+//     }
 
 
 
@@ -1259,11 +1356,27 @@ VALUES('$id','$sponsorkey','$a1','$a2','$a3','$a4','$a5','$a6','$a7','$a8','$a9'
     function emailerAll($email, $message, $subject)
     {
         global $firstname;
-        $headers = 'From: Music Dynasty <admin@musicdynasty.ng>' . "\r\n";
-        $headers .= 'Reply-To: admin@musicdynasty.ng' . "\r\n";
+        // $headers = 'From: Music Dynasty <admin@musicdynasty.ng>' . "\r\n";
+        // $headers .= 'Reply-To: admin@musicdynasty.ng' . "\r\n";
+        // $headers .= "MIME-Version: 1.0\r\n";
+        // $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
+
+        // $headers = "From: admin@musicdynasty.ng\r\n";
+        // $headers .= "Reply-To: admin@musicdynasty.ng\r\n";
+        // $headers .= "Return-Path: admin@musicdynasty.ng\r\n";
+        // $headers .= "CC: sombodyelse@example.com\r\n";
+        // $headers .= "BCC: hidden@example.com\r\n";
+
+
+        $headers = "Reply-To: Music Dynasty <admin@musicdynasty.ng>\r\n"; 
+        $headers .= "Return-Path: Music Dynasty <admin@musicdynasty.ng>\r\n"; 
+        $headers .= "From: Music Dynasty <admin@musicdynasty.ng>\r\n";  
+        $headers .= "Organization: Music Dynasty\r\n";
         $headers .= "MIME-Version: 1.0\r\n";
         $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
-
+        $headers .= "X-Priority: 3\r\n";
+        $headers .= "X-Mailer: PHP". phpversion() ."\r\n" ;
+        
         $send = mail($email, $subject, $message, $headers);
         return;
     }

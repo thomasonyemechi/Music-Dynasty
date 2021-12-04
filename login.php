@@ -1,6 +1,5 @@
 <?php 
 
-session_start();  ob_clean();
 include ('portal/library/connect.inc.php');
 
 ?>

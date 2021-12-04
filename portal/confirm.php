@@ -8,7 +8,7 @@ if (isset($_GET['token'])) {
     $row = mysqli_fetch_array($sql);
     $ntoken  = $max->win_hashs(100);
     $ctime = time();
-    $db->query("UPDATE user SET verified_at=$ctime, token='$ntoken' WHERE token='$token' ") or die('serve not reached');
+    $db->query("UPDATE user SET email_verified_at=$ctime, token='$ntoken' WHERE token='$token' ") or die('serve not reached');
     $_SESSION['report'] = 'Email Verification Successful';
     $_SESSION['user_id'] = $row['id'];
     header('location: ../login.php');
@@ -36,8 +36,10 @@ if (isset($_GET['token'])) {
   <div class="wrapper">
 
 
+  <?php if(isset($report)) { echo $max->Alert(); } ?>
 
-    <!-- Content Wrapper. Contains page content -->
+
+
     <div class="content-wrapper">
       <!-- Content Header (Page header) -->
       <section class="content-header">

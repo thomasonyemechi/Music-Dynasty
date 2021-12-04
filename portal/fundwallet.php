@@ -40,8 +40,13 @@ $id = $_SESSION['user_id'];
           </div>
         </div><!-- /.container-fluid -->
       </section>
+      <?php $sql = $db->query("SELECT * FROM user WHERE id='$uid' "); $data = mysqli_fetch_array($sql);
+        ?>
+
+      <input type="hidden" name="userInfo" value='<?php  echo json_encode($data); ?>' >
+
       <?php
-      $_SESSION['amt'] = $amt = 500000;
+      $_SESSION['amt'] = $amt = 100;
       $_SESSION['trno'] = $trno = $max->win_hash(10);  ?>
       <section class="content">
         <div class="container-fluid">
@@ -73,6 +78,9 @@ $id = $_SESSION['user_id'];
                 if (userName($id, 'active') == 0) {
               ?>
 
+
+              
+
                   <form method='post' action='https://webpay.interswitchng.com/collections/w/pay'>
                     <input type="hidden" name='site_redirect_url' class="form-control" value='https://musicdynasty.ng/portal/credit.php?<?php echo 'amt=' . $amt . '&&trno=' . $trno . '&&id=' . $id . ''; ?>' />
                     <input type="hidden" name='pay_item_id' class="form-control" value='Default_Payable_MX20060' />
@@ -90,10 +98,22 @@ $id = $_SESSION['user_id'];
                     <input type="hidden" name='display_mode' value='PAGE' class="form-control" />
                     <!-- <strong>Merchant Code</strong>  -->
                     <input type="hidden" name='merchant_code' value='MX20060' class="form-control" />
-                    <strong>Hit "Subscribe Now" to invest and sponsor a music project</strong> <input type='submit' class="btn btn-primary btn-block" value='Subscribe Now' class="form-control" />
+                    <strong>Hit "Subscribe Now" to invest and sponsor a music project</strong> 
+                    <div class="row">
+                      <!-- <input type='submit' class="btn btn-primary btn-block" value='Subscribe Now' class="form-control" /> -->
+                      <div class="col-6">
+                        <button type="submit" disabled class="btn btn-primary btn-block">Pay With Interswitch</button>
+                      </div>
+                      <div class="col-6">
+                        <button type="submit" disabled class="btn btn-primary btn-block payWithFlutter">Pay With Flutter Wave</button>
+                      </div>
+
+                    </div>
                   </form>
-              <?php }
-              } ?>
+              <?php
+               }
+              } 
+              ?>
 
 
 
@@ -184,7 +204,7 @@ $id = $_SESSION['user_id'];
   </div>
   <!-- ./wrapper -->
 
-  <script type="text/javascript">
+<!--   <script type="text/javascript">
     document.getElementById('options').onchange = function() {
       var i = 1;
       var myDiv = document.getElementById(i);
@@ -195,13 +215,33 @@ $id = $_SESSION['user_id'];
       document.getElementById(this.value).style.display = 'block';
     };
   </script>
-
+ -->
   <script src="assets/plugins/jquery/jquery.min.js"></script>
   <script src="assets/plugins/jquery-ui/jquery-ui.min.js"></script>
   <script src="assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
   <script src="assets/dist/js/adminlte.js"></script>
   <script src="assets/dist/js/pages/dashboard.js"></script>
+
+  <script src="https://checkout.flutterwave.com/v3.js"></script>
+  <script src="assets/js/flutter.js"></script>
+
+  <script type="text/javascript">
+      $( document ).ready(function() {
+        $('button').removeAttr('disabled');
+        // console.log( "ready!" );
+      });
+
+        $(function() {
+
+
+            $('.payWithFlutter').on('click', function(e) {
+                e.preventDefault();
+                payWithFlutter();
+            });
+        })
+    </script>
+
 
 </body>
 

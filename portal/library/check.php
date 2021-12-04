@@ -11,4 +11,11 @@ if($max->checkAcc() == TRUE){
 	}
 }
 
+
+if (userName($_SESSION['user_id'],'email_verified_at') == 0) {
+		header('location: confirm.php');
+}
+
+
+
 ?>
